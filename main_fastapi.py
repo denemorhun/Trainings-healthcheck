@@ -10,8 +10,6 @@ import datetime
 app = FastAPI()
 
 datetime_object = datetime.datetime.now()
-print(datetime_object.strftime("%H:%M:%S"))
-
 
 @app.get("/")
 def read_root():
@@ -32,3 +30,5 @@ def get_uptime():
     return{"Uptime in seconds":time_running}
 
 @app.get("/version")
+def get_version():
+    return{"Version":"0.0.1"}
