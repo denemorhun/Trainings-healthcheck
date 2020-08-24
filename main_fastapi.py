@@ -1,5 +1,10 @@
-from typing import Optional
-from pydantic import BaseModel
+# author: Denem Orhun
+# version:
+# date modified: 08/24/2020
+ 
+# from typing import Optional
+# from pydantic import BaseModel
+import uvicorn
 
 from fastapi import FastAPI, status
 from enum import Enum
@@ -7,9 +12,15 @@ from enum import Enum
 from datetime import timedelta
 import datetime
 
+import os, sys
+
 app = FastAPI()
 
-datetime_object = datetime.datetime.now()
+if __name__ == "__main__":
+    os.system('ver up')
+    uvicorn.run("main_fastapi:app", host="0.0.0.0", port=8080, log_level="info")
+
+server_start_time = datetime.datetime.now()
 
 @app.get("/")
 def read_root():
@@ -21,14 +32,11 @@ def get_health():
 
 @app.get("/time")
 def get_uptime():
-
-    time_running = datetime.datetime.now() - datetime_object
-    # total_seconds = time_delta.total_seconds()
-    # return{"uptime":time_running.strftime("%H:%M:%S")}
-
-    # return{"uptime":total_seconds}
+    time_running = datetime.datetime.now() - server_start_time
     return{"Uptime in seconds":time_running}
 
 @app.get("/version")
 def get_version():
-    return{"Version":"0.0.1"}
+    fp = open(os.path.join(sys.path[0], "VERSION"))
+    version = fp.readline()
+    return{"Version":version}
