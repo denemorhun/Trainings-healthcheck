@@ -2,12 +2,9 @@
 # version:
 # date modified: 08/24/2020
  
-# from typing import Optional
-# from pydantic import BaseModel
 import uvicorn
 
 from fastapi import FastAPI, status
-from enum import Enum
 
 from datetime import timedelta
 import datetime
@@ -17,13 +14,12 @@ import os, sys
 app = FastAPI()
 
 if __name__ == "__main__":
-    os.system('ver up')
     uvicorn.run("main_fastapi:app", host="0.0.0.0", port=8080, log_level="info")
 
 server_start_time = datetime.datetime.now()
 
 @app.get("/")
-def read_root():
+def hello_world():
     return {"Hello": "World"}
 
 @app.get("/health")
