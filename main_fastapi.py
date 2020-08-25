@@ -36,11 +36,6 @@ if __name__ == "__main__":
 
 server_start_time = datetime.datetime.now()
 
-# class Response(BaseModel):
-#     status: int
-#     version: str
-#     uptime: float
-
 @app.get("/")
 def hello_world():
     return {"Hello": "World"}
