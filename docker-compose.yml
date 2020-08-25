@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  trainingshealthcheck:
+    image: trainingshealthcheck
+    build:
+      context: .
+      dockerfile: Dockerfile
