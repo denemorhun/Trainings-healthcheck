@@ -49,7 +49,7 @@ def get_health():
     fp = open(os.path.join(sys.path[0], "VERSION"))
     version = fp.readline()
     return {
-            "status": 200,
+            "status": status.HTTP_200_OK,
             "Server running since:":server_start_time.strftime("%m/%d/%Y, %H:%M:%S"),
             "Uptime in seconds":time_running.seconds,
             "Version":version
