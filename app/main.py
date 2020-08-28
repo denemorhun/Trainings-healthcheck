@@ -48,8 +48,6 @@ def get_health():
     # read version from file
     fp = open(os.path.join(sys.path[0], "VERSION"))
     version = fp.readline()
-
-
     return {
             "status": 200,
             "Server running since:":server_start_time.strftime("%m/%d/%Y, %H:%M:%S"),
